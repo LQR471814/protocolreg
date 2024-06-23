@@ -157,8 +157,8 @@ func RegisterLinux(id string, opts LinuxOptions) error {
 	if opts.Exec == "" {
 		return fmt.Errorf("you must specify a command for Exec, it will be executed when your application is called via custom url")
 	}
-	if !opts.NoUrlArgNecessary && !strings.Contains(opts.Exec, "%u") {
-		return fmt.Errorf("you have not specified %%u in your Exec command, %%u is the placeholder for the specific url your application is called with. if you meant to omit this set the NoUrlArgNecessary option to true")
+	if !opts.NoUrlArgNecessary && !strings.Contains(opts.Exec, "%u") && !strings.Contains(opts.Exec, "%U") {
+		return fmt.Errorf("you have not specified %%u or %%U in your Exec command, %%u/U is the placeholder for the specific url your application is called with. if you meant to omit this set the NoUrlArgNecessary option to true")
 	}
 
 	homedir, ok := os.LookupEnv("HOME")
