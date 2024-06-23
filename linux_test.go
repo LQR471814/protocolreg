@@ -34,7 +34,7 @@ func TestLinux(t *testing.T) {
 		Metadata: LinuxMetadataOptions{
 			Name: "Test protocolreg handler",
 		},
-		Exec:      fmt.Sprintf(`sh -c "echo '%%u' > %s"`, outputPath),
+		Exec:      fmt.Sprintf(`sh -c "echo %%u > %s"`, outputPath),
 		Protocols: []string{protocol1, protocol2},
 	})
 	if err != nil {
